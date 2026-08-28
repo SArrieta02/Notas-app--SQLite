@@ -6,4 +6,6 @@
         <item name="colorPrimaryVariant">@color/morado</item>
         <item name="android:statusBarColor">@color/morado</item>
     </style>
+
+    <style name="Theme.NotasAppsSQLite" parent="Base.Theme.NotasAppsSQLite" />
 </resources>

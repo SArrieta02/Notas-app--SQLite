@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NotasAppsSQLite" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/morado</item>
+        <item name="colorPrimaryVariant">@color/morado</item>
+        <item name="android:statusBarColor">@color/morado</item>
+    </style>
+</resources>

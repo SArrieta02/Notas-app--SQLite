@@ -59,5 +59,21 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         return listaNotas
     }
 
+    fun getIdNota(idNota: Int): Nota{
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUM_ID = $idNota"
+        val cursor = db.rawQuery(query, null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUM_ID))
+        val titulo = cursor.getString(cursor.getColumnIndexOrThrow(COLUM_TITLE))
+        val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUM_DESCRIPTION))
+
+        cursor.close()
+        db.close()
+
+        return Nota(id,titulo,descripcion)
+    }
+
 
 }

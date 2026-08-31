@@ -6,4 +6,5 @@
     <string name="txtNotas">Notas</string>
     <string name="item_titulo">Titulo</string>
     <string name="item_descripcion">Descripción</string>
+    <string name="txtActualizarNota">Actualizar Nota</string>
 </resources>

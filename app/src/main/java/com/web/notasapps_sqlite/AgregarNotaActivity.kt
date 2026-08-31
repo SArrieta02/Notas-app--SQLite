@@ -24,11 +24,11 @@ class AgregarNotaActivity : AppCompatActivity() {
         binding.ivGuardarNota.setOnClickListener {
             val titulo = binding.elTitulo.text.toString()
             val descripcion = binding.etDescripccion.text.toString()
-            val nota = Nota(0, titulo, descripcion)
-            db.insertNota(nota)
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-            finishAffinity()
-            Toast.makeText(applicationContext, "Se ha agregado la nota", Toast.LENGTH_SHORT).show()
+            if (!titulo.isEmpty() && !descripcion.isEmpty()){
+                guardarNota(titulo, descripcion)
+            }else{
+                Toast.makeText(applicationContext, "Llene los campos", Toast.LENGTH_SHORT).show()
+            }
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -36,5 +36,13 @@ class AgregarNotaActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun guardarNota(titulo: String, descripcion: String){
+        val nota = Nota(0, titulo, descripcion)
+        db.insertNota(nota)
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        finishAffinity()
+        Toast.makeText(applicationContext, "Se ha agregado la nota", Toast.LENGTH_SHORT).show()
     }
 }

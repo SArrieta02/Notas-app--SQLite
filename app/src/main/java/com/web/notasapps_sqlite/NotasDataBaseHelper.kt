@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
-){
+) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery =
             "CREATE TABLE $TABLE_NAME($COLUM_ID INTEGER PRIMARY KEY, $COLUM_TITLE TEXT, $COLUM_DESCRIPTION TEXT)"
@@ -21,7 +21,7 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         onCreate(db)
     }
 
-    companion object{
+    companion object {
         private const val DATABASE_NAME = "notas.db"
         private const val DATABASE_VERSION = 1
         private const val TABLE_NAME = "notas"
@@ -30,7 +30,7 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         private const val COLUM_DESCRIPTION = "descripcion"
     }
 
-    fun insertNota(nota: Nota){
+    fun insertNota(nota: Nota) {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUM_TITLE, nota.titulo)
@@ -40,42 +40,24 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         db.close()
     }
 
+    fun getAllNotas(): List<Nota> {
+        val listaNotas = mutableListOf<Nota>()
+        val db = readableDatabase
+        val query = "SELECT * FROM  $TABLE_NAME"
+        val cursor = db.rawQuery(query, null)
 
+        while (cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUM_ID))
+            val titulo = cursor.getString(cursor.getColumnIndexOrThrow(COLUM_TITLE))
+            val descricion = cursor.getString(cursor.getColumnIndexOrThrow(COLUM_DESCRIPTION))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            val nota= Nota (id, titulo, descricion)
+            listaNotas.add(nota)
+        }
+        cursor.close()
+        db.close()
+        return listaNotas
+    }
 
 
 }

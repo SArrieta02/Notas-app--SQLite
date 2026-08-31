@@ -1,5 +1,6 @@
 package com.web.notasapps_sqlite
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -28,4 +29,53 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         private const val COLUM_TITLE = "titulo"
         private const val COLUM_DESCRIPTION = "descripcion"
     }
+
+    fun insertNota(nota: Nota){
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUM_TITLE, nota.titulo)
+            put(COLUM_DESCRIPTION, nota.descripcion)
+        }
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

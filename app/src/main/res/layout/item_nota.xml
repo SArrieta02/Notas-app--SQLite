@@ -27,12 +27,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </TextView>
-            
+
+            <!--Actualizar Nota-->
             <ImageView
                 android:id="@+id/ivActualizar"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_editar"
                 android:layout_marginEnd="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+            <!--Eliminar Nota-->
+            <ImageView
+                android:id="@+id/ivEliminar"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_eliminar"
                 android:layout_width="25dp"
                 android:layout_height="25dp"/>
 

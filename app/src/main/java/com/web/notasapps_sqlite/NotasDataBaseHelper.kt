@@ -78,7 +78,7 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
     fun updateNota(nota: Nota){
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COLUM_TITLE, nota.id)
+            put(COLUM_TITLE, nota.titulo)
             put(COLUM_DESCRIPTION, nota.descripcion)
         }
 
@@ -86,6 +86,15 @@ class NotasDataBaseHelper (context: Context) : SQLiteOpenHelper(
         val whereArgs = arrayOf(nota.id.toString())
         db.update(TABLE_NAME, values, whereClause, whereArgs)
         db.close()
+    }
+
+    fun deleteNota(idNota: Int){
+        val db = writableDatabase
+        val whereClause = "$COLUM_ID = ?"
+        val whereArgs = arrayOf(idNota.toString())
+        db.delete(TABLE_NAME, whereClause, whereArgs)
+        db.close()
+
     }
 
 

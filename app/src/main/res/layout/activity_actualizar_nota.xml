@@ -24,7 +24,7 @@
         />
 
     <ImageView
-        android:id="@+id/ivGuardarNota"
+        android:id="@+id/ivActualizarNota"
         android:src="@drawable/ic_check"
         android:layout_alignTop="@+id/txtActualizarNota"
         android:layout_alignParentEnd="true"
@@ -42,7 +42,7 @@
         android:padding="10dp">
 
         <EditText
-            android:id="@+id/elTitulo"
+            android:id="@+id/etTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/etTitulo"

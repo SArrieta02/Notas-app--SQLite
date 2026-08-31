@@ -22,7 +22,7 @@ class AgregarNotaActivity : AppCompatActivity() {
         db = NotasDataBaseHelper(this)
 
         binding.ivGuardarNota.setOnClickListener {
-            val titulo = binding.elTitulo.text.toString()
+            val titulo = binding.etTitulo.text.toString()
             val descripcion = binding.etDescripccion.text.toString()
             if (!titulo.isEmpty() && !descripcion.isEmpty()){
                 guardarNota(titulo, descripcion)
